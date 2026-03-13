@@ -23,6 +23,9 @@ public struct YouTubeSDKConstants {
             public static let youtubeInnerTubeURL = "https://www.youtube.com/youtubei"
             public static let youtubeMusicInnerTubeURL = "https://music.youtube.com/youtubei"
             public static let youtubeChartsInnerTubeURL = "https://charts.youtube.com/youtubei"
+
+            /// Suggestions URLs
+            public static let youtubeSuggestionsURL = "https://suggestqueries-clients6.youtube.com/complete"
             
             /// Random InnerTube API URLs
             public static let googleapisInnerTubeURL = "https://youtubei.googleapis.com/youtubei"
@@ -31,6 +34,38 @@ public struct YouTubeSDKConstants {
             public static let testURL = "https://test-youtubei.sandbox.googleapis.com/youtubei"
             public static let camiURL = "https://cami-youtubei.sandbox.googleapis.com/youtubei"
             public static let uytfeURL = "https://uytfe.sandbox.googleapis.com/youtubei"
+        }
+    }
+    
+    public struct InternalKeys {
+        public struct Renderers {
+            public static let video = "videoRenderer"
+            public static let gridVideo = "gridVideoRenderer"
+            public static let musicVideo = "musicVideoRenderer"
+            public static let musicResponsiveListItem = "musicResponsiveListItemRenderer"
+            public static let playlistVideo = "playlistVideoRenderer"
+            public static let channel = "channelRenderer"
+            public static let playlist = "playlistRenderer"
+            public static let musicShelf = "musicShelfRenderer"
+            public static let musicCarouselShelf = "musicCarouselShelfRenderer"
+        }
+        
+        public struct BrowseIDs {
+            // Main YouTube
+            public static let home = "FEwhat_to_watch"
+            public static let trending = "FEtrending"
+            
+            // YouTube Music
+            public struct Music {
+                public static let home = "FEmusic_home"
+                public static let explore = "FEmusic_explore"
+                public static let charts = "FEmusic_charts"
+                public static let newReleases = "FEmusic_new_releases"
+                public static let moods = "FEmusic_moods_and_genres"
+                public static let library = "FEmusic_library"
+                public static let history = "FEmusic_history"
+                public static let likedVideos = "FEmusic_liked_videos"
+            }
         }
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 public actor YouTubeClient {
-    private let network: NetworkClient
+    let network: NetworkClient
     
     /// Initializes the Client.
     /// - Parameter cookies: Optional "Cookie" header string. If provided, requests will be authenticated.
@@ -16,196 +16,120 @@ public actor YouTubeClient {
         let context = InnerTubeContext(client: ClientConfig.ios, cookies: cookies)
         self.network = NetworkClient(context: context)
     }
+
+    // MARK: - Browsing
     
-    // MARK: - Player (Essential for Streaming)
+    public func getHome() async throws -> YouTubeContinuation<YouTubeItem> {
+        let data = try await network.get("browse", body: ["browseId": YouTubeSDKConstants.InternalKeys.BrowseIDs.home])
+        return await parseContinuationResults(from: data)
+    }
+    
+    public func getTrending() async throws -> [YouTubeVideo] {
+        let data = try await network.get("browse", body: ["browseId": YouTubeSDKConstants.InternalKeys.BrowseIDs.trending])
+        return await parseVideos(from: data)
+    }
+    
+    public func getChannelVideos(channelId: String) async throws -> [YouTubeVideo] {
+        let data = try await network.get("browse", body: ["browseId": channelId, "params": "EgZ2aWRlb3M%3D"])
+        return await parseVideos(from: data)
+    }
+    
+    public func getPlaylist(id: String) async throws -> YouTubeContinuation<YouTubeVideo> {
+        let browseId = id.hasPrefix("PL") ? "VL\(id)" : id
+        let data = try await network.get("browse", body: ["browseId": browseId])
         
+        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { 
+            throw YouTubeError.parsingError(details: "Invalid JSON response for playlist")
+        }
+        
+        let videosRaw = await findAll(key: YouTubeSDKConstants.InternalKeys.Renderers.playlistVideo, in: json)
+        let videos = videosRaw.compactMap { item -> YouTubeVideo? in
+            guard let dict = item as? [String: Any] else { return nil }
+            return YouTubeVideo(from: dict)
+        }
+        
+        let token = await findContinuationToken(in: json)
+        return YouTubeContinuation(items: videos, continuationToken: token)
+    }
+
+    public func search(_ query: String) async throws -> YouTubeContinuation<YouTubeItem> {
+        let data = try await network.get("search", body: ["query": query])
+        return await parseContinuationResults(from: data)
+    }
+
     /// Fetches the full video details, including Streaming URLs (HLS).
-    /// Use this to play a video or song.
     public func video(id: String) async throws -> YouTubeVideo {
-        // 1. Fetch & Decode
         let data = try await network.get("player", body: ["videoId": id])
         let decoder = JSONDecoder()
         var video = try decoder.decode(YouTubeVideo.self, from: data)
         
-        // 2. Check if we need to hack the mainframe
         if video.requiresDeciphering {
             if var streamingData = video.streamingData {
                 var newFormats: [Stream] = []
-                
-                // We only loop through adaptiveFormats because that's where the high-quality audio lives
                 for var stream in streamingData.adaptiveFormats {
-                    
-                    // Only decipher if it HAS a cipher
                     if let cipher = stream.signatureCipher {
                         do {
-                            // We pass "" as the base URL because the cipher string usually contains the url itself
                             let decryptedURL = try await Cipher.shared.decipher(url: stream.url ?? "", signatureCipher: cipher, network: network)
-                            
-                            // 4. Update the Stream
                             stream.url = decryptedURL.absoluteString
                             stream.signatureCipher = nil
-                            print("✅ Deciphered Stream: \(stream.mimeType)")
                         } catch {
                             print("⚠️ Failed to decipher stream: \(error)")
                         }
                     }
-                    
                     newFormats.append(stream)
                 }
-                
-                // 5. Save back to video
                 streamingData.adaptiveFormats = newFormats
                 video.streamingData = streamingData
             }
         }
-        
         return video
     }
-    
-    // MARK: - Search
-    
-    public func search(_ query: String) async throws -> [YouTubeSearchResult] {
-        let data = try await network.get("search", body: ["query": query])
-        return parseSearchResults(from: data)
-    }
-    
-    // MARK: - Browsing (Home/Trending)
-    
-    public func getHome() async throws -> [YouTubeVideo] {
-        // "FEwhat_to_watch" is the internal ID for the Home Feed
-        let data = try await network.get("browse", body: ["browseId": "FEwhat_to_watch"])
-        return parseVideos(from: data)
-    }
-    
-    public func getTrending() async throws -> [YouTubeVideo] {
-        let data = try await network.get("browse", body: ["browseId": "FEtrending"])
-        return parseVideos(from: data)
-    }
-    
-    // MARK: - Channel Details
-    
-    public func getChannelVideos(channelId: String) async throws -> [YouTubeVideo] {
-        let data = try await network.get("browse", body: ["browseId": channelId, "params": "EgZ2aWRlb3M%3D"]) // "Videos" tab param
-        return parseVideos(from: data)
-    }
-    
-    // MARK: - Playlist Details
-    
-    public func getPlaylist(id: String) async throws -> [YouTubeVideo] {
-        let browseId = id.hasPrefix("PL") ? "VL\(id)" : id
-        let data = try await network.get("browse", body: ["browseId": browseId])
-        
-        // Playlists use "playlistVideoRenderer"
-        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { return [] }
-        let items = findAll(key: "playlistVideoRenderer", in: json)
-        
-        return items.compactMap { item in
-            guard let dict = item as? [String: Any] else { return nil }
-            return YouTubeVideo(from: dict)
-        }
-    }
-}
 
-extension YouTubeClient {
-    
-    // MARK: - Search Parser
-    func parseSearchResults(from data: Data) -> [YouTubeSearchResult] {
-        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { return [] }
-        var results: [YouTubeSearchResult] = []
+    /// Fetches search suggestions for Main YouTube using an external suggest endpoint.
+    /// - Parameter query: The search term.
+    /// - Returns: A list of suggested search terms.
+    public func getSearchSuggestions(query: String, baseURL: String = YouTubeSDKConstants.URLS.API.youtubeSuggestionsURL) async throws -> [String] {
+        guard let url = URL(string: baseURL) else { throw URLError(.badURL) }
+        var components = URLComponents(url: url.appendingPathComponent("search"), resolvingAgainstBaseURL: true)
+        components?.queryItems = [
+            URLQueryItem(name: "ds", value: "yt"),
+            URLQueryItem(name: "client", value: "youtube"),
+            URLQueryItem(name: "q", value: query)
+        ]
         
-        // 1. Videos
-        let videos = findAll(key: "videoRenderer", in: json)
-        for item in videos {
-            if let dict = item as? [String: Any], let video = YouTubeVideo(from: dict) {
-                results.append(.video(video))
-            }
+        guard let url = components.url else { return [] }
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        guard let responseString = String(data: data, encoding: .utf8) else { return [] }
+        
+        // The response is JSONP: window.google.ac.h(["query", [["suggestion", ...]]])
+        guard let startBracket = responseString.firstIndex(of: "["),
+              let endBracket = responseString.lastIndex(of: "]") else {
+            return []
         }
         
-        // 2. Channels
-        let channels = findAll(key: "channelRenderer", in: json)
-        for item in channels {
-            if let dict = item as? [String: Any], let channel = YouTubeChannel(from: dict) {
-                results.append(.channel(channel))
-            }
+        let jsonString = String(responseString[startBracket...endBracket])
+        guard let jsonArray = try? JSONSerialization.jsonObject(with: Data(jsonString.utf8)) as? [Any],
+              jsonArray.count > 1,
+              let suggestionsArray = jsonArray[1] as? [[Any]] else {
+            return []
         }
         
-        // 3. Playlists
-        let playlists = findAll(key: "playlistRenderer", in: json)
-        for item in playlists {
-            if let dict = item as? [String: Any], let playlist = YouTubePlaylist(from: dict) {
-                results.append(.playlist(playlist))
-            }
-        }
+        return suggestionsArray.compactMap { $0.first as? String }
+    }
+    
+    /// Fetches an AI-powered summary of the video (if available).
+    public func getVideoSummary(videoId: String) async throws -> YouTubeAISummary {
+        let body: [String: Any] = [
+            "videoId": videoId,
+            "engagementPanelType": "ENGAGEMENT_PANEL_TYPE_YOU_CHAT"
+        ]
+        let data = try await network.get("get_panel", body: body)
         
-        return results
-    }
-    
-    // MARK: - Generic Video Parser (For Channel/Playlist/Home)
-    func parseVideos(from data: Data) -> [YouTubeVideo] {
-        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { return [] }
-        
-        // YouTube uses gridVideoRenderer for channels, videoRenderer for lists
-        let videos = findAll(key: "videoRenderer", in: json) + findAll(key: "gridVideoRenderer", in: json)
-        
-        return videos.compactMap { item in
-            guard let dict = item as? [String: Any] else { return nil }
-            return YouTubeVideo(from: dict)
+        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let summary = YouTubeAISummary(from: json) else {
+            throw YouTubeError.apiError("AI Summary not available for this video.")
         }
-    }
-    
-    // MARK: - Helper
-    private func findAll(key: String, in container: Any) -> [Any] {
-        var results: [Any] = []
-        if let dict = container as? [String: Any] {
-            if let found = dict[key] { results.append(found) }
-            for value in dict.values { results.append(contentsOf: findAll(key: key, in: value)) }
-        } else if let array = container as? [Any] {
-            for element in array { results.append(contentsOf: findAll(key: key, in: element)) }
-        }
-        return results
-    }
-}
-
-extension YouTubeClient {
-    // MARK: - Interactions
-    
-    /// Likes a video.
-    public func like(videoId: String) async throws {
-        let body: [String: Any] = [
-            "target": ["videoId": videoId]
-        ]
-        let _ = try await network.sendComplexRequest("like/like", body: body)
-    }
-    
-    /// Removes a like from a video.
-    public func removeLike(videoId: String) async throws {
-        let body: [String: Any] = [
-            "target": ["videoId": videoId]
-        ]
-        let _ = try await network.sendComplexRequest("like/removelike", body: body)
-    }
-    
-    /// Dislikes a video.
-    public func dislike(videoId: String) async throws {
-        let body: [String: Any] = [
-            "target": ["videoId": videoId]
-        ]
-        let _ = try await network.sendComplexRequest("like/dislike", body: body)
-    }
-    
-    /// Subscribes to a channel.
-    public func subscribe(channelId: String) async throws {
-        let body: [String: Any] = [
-            "channelIds": [channelId]
-        ]
-        let _ = try await network.sendComplexRequest("subscription/subscribe", body: body)
-    }
-    
-    /// Unsubscribes from a channel.
-    public func unsubscribe(channelId: String) async throws {
-        let body: [String: Any] = [
-            "channelIds": [channelId]
-        ]
-        let _ = try await network.sendComplexRequest("subscription/unsubscribe", body: body)
+        return summary
     }
 }
