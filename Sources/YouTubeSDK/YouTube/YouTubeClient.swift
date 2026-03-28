@@ -57,26 +57,26 @@ public actor YouTubeClient {
 
     public func search(_ query: String) async throws -> YouTubeContinuation<YouTubeItem> {
         let data = try await webSearchNetwork.get("search", body: ["query": query])
-        let diagnostics = diagnoseSearchResponse(from: data)
-        print("yt_search_diagnostics client=WEB \(diagnostics.summary)")
-        writeSearchDebugDump(data, clientName: "web")
+//        let diagnostics = diagnoseSearchResponse(from: data)
+//        print("yt_search_diagnostics client=WEB \(diagnostics.summary)")
+//        writeSearchDebugDump(data, clientName: "web")
 
         return parseContinuationResults(from: data)
     }
 
-    public func writeSearchDebugDump(_ data: Data, clientName: String) {
-        let timestamp = Int(Date().timeIntervalSince1970)
-        let tempFile = "yt_search_debug_\(clientName)_\(timestamp).json"
-        let tempURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(tempFile)
-
-        guard let jsonObject = try? JSONSerialization.jsonObject(with: data),
-              let debugData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
-            return
-        }
-
-        try? debugData.write(to: tempURL, options: .atomic)
-        print("yt_search_debug client=\(clientName) saved=\(tempURL.path)")
-    }
+//    public func writeSearchDebugDump(_ data: Data, clientName: String) {
+//        let timestamp = Int(Date().timeIntervalSince1970)
+//        let tempFile = "yt_search_debug_\(clientName)_\(timestamp).json"
+//        let tempURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(tempFile)
+//
+//        guard let jsonObject = try? JSONSerialization.jsonObject(with: data),
+//              let debugData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
+//            return
+//        }
+//
+//        try? debugData.write(to: tempURL, options: .atomic)
+//        print("yt_search_debug client=\(clientName) saved=\(tempURL.path)")
+//    }
 
     /// Fetches the full video details, including Streaming URLs (HLS).
     public func video(id: String) async throws -> YouTubeVideo {

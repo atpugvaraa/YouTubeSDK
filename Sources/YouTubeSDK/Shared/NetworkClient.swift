@@ -80,12 +80,6 @@ public actor NetworkClient {
             throw URLError(.badServerResponse)
         }
         
-#if DEBUG
-        let path = (NSString(string: "~/Downloads/debug.json")).expandingTildeInPath
-        FileManager.default.createFile(atPath: path, contents: data)
-        print("💾 Debug: Saved response to \(path)")
-#endif
-        
         return data
     }
     

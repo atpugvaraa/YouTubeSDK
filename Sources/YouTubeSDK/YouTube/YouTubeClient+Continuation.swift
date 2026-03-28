@@ -51,10 +51,10 @@ extension YouTubeClient {
 
                     print("yt_fetch_continuation try attempt=\(attempt) endpoint=\(endpoint) tokenLen=\(candidate.count) tokenHasPercent=\(candidate.contains("%"))")
                     let data = try await webSearchNetwork.get(endpoint, body: body)
-                let diagnostics = diagnoseSearchResponse(from: data)
-                    print("yt_fetch_continuation client=WEB attempt=\(attempt) endpoint=\(endpoint) \(diagnostics.summary)")
-                    writeSearchDebugDump(data, clientName: "web_continuation_\(endpoint)")
-                    return await parseContinuationResults(from: data)
+//                let diagnostics = diagnoseSearchResponse(from: data)
+//                    print("yt_fetch_continuation client=WEB attempt=\(attempt) endpoint=\(endpoint) \(diagnostics.summary)")
+//                    writeSearchDebugDump(data, clientName: "web_continuation_\(endpoint)")
+                    return parseContinuationResults(from: data)
                 } catch {
                     lastError = error
                     let ns = error as NSError
