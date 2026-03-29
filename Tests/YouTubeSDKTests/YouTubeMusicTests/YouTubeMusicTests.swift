@@ -20,4 +20,16 @@ struct YouTubeMusicTests {
         }
         #expect(!sections.isEmpty)
     }
+
+    @Test("Fetch paginated YouTube Music home page")
+    func testMusicHomePage() async throws {
+        let client = YouTubeMusicClient()
+        let page = try await client.getHomePage()
+
+        #expect(!page.sections.isEmpty || !page.items.isEmpty || page.continuationToken != nil)
+
+        if let token = page.continuationToken, !token.isEmpty {
+            _ = try await client.getHomeContinuation(token: token)
+        }
+    }
 }

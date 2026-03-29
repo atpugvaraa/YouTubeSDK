@@ -16,6 +16,16 @@ extension YouTubeMusicClient {
         let items = findAll(key: "musicResponsiveListItemRenderer", in: json)
         return items.compactMap { ($0 as? [String: Any]).flatMap { YouTubeMusicSong(from: $0) } }
     }
+
+    func parseHomePage(from data: Data) -> YouTubeMusicHomePage {
+        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            return YouTubeMusicHomePage(sections: [], continuationToken: nil)
+        }
+
+        let sections = parseSections(from: json)
+        let continuationToken = findContinuationToken(in: json)
+        return YouTubeMusicHomePage(sections: sections, continuationToken: continuationToken)
+    }
     
     func parseSections(from json: [String: Any]) -> [YouTubeMusicSection] {
         var sections: [YouTubeMusicSection] = []
@@ -51,5 +61,27 @@ extension YouTubeMusicClient {
             for element in array { results.append(contentsOf: findAll(key: key, in: element)) }
         }
         return results
+    }
+
+    func findContinuationToken(in container: Any) -> String? {
+        if let dict = container as? [String: Any] {
+            if let token = dict["continuation"] as? String { return token }
+            if let continuationData = (dict["continuationEndpoint"] as? [String: Any])?["continuationCommand"] as? [String: Any],
+               let token = continuationData["token"] as? String {
+                return token
+            }
+            for value in dict.values {
+                if let found = findContinuationToken(in: value) {
+                    return found
+                }
+            }
+        } else if let array = container as? [Any] {
+            for element in array {
+                if let found = findContinuationToken(in: element) {
+                    return found
+                }
+            }
+        }
+        return nil
     }
 }

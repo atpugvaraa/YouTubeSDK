@@ -10,8 +10,10 @@ import Foundation
 public actor YouTubeMusicClient {
     
     let network: NetworkClient
+    let cookies: String?
     
     public init(cookies: String? = nil) {
+        self.cookies = cookies
         let context = InnerTubeContext(client: ClientConfig.webRemix, cookies: cookies)
         self.network = NetworkClient(context: context, baseURL: YouTubeSDKConstants.URLS.API.youtubeMusicInnerTubeURL)
     }

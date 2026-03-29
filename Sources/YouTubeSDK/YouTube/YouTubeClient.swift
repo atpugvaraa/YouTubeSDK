@@ -10,10 +10,12 @@ import Foundation
 public actor YouTubeClient {
     let network: NetworkClient
     let webSearchNetwork: NetworkClient
+    let cookies: String?
     
     /// Initializes the Client.
     /// - Parameter cookies: Optional "Cookie" header string. If provided, requests will be authenticated.
     public init(cookies: String? = nil) {
+        self.cookies = cookies
         let context = InnerTubeContext(client: ClientConfig.ios, cookies: cookies)
         let webContext = InnerTubeContext(client: ClientConfig.web, cookies: cookies)
         self.network = NetworkClient(context: context)
@@ -22,28 +24,49 @@ public actor YouTubeClient {
 
     // MARK: - Browsing
     
-    public func getHome() async throws -> YouTubeContinuation<YouTubeItem> {
+    public func getHome(
+        regionCode: String? = nil,
+        languageCode: String? = nil,
+        musicOnly: Bool = false
+    ) async throws -> YouTubeContinuation<YouTubeItem> {
+        let searchNetwork = makeWebSearchNetwork(regionCode: regionCode, languageCode: languageCode)
+
         // Home parsing is tuned to WEB browse payloads (rich wrappers and continuation shape).
-        let data = try await webSearchNetwork.get("browse", body: ["browseId": YouTubeSDKConstants.InternalKeys.BrowseIDs.home])
-        let parsedHome = parseContinuationResults(from: data)
+        let data = try await searchNetwork.get("browse", body: ["browseId": YouTubeSDKConstants.InternalKeys.BrowseIDs.home])
+        var parsedHome = parseContinuationResults(from: data)
+        if musicOnly {
+            parsedHome = filteredMusicContinuation(parsedHome)
+        }
         if !parsedHome.items.isEmpty {
             return parsedHome
         }
 
         // Logged-out/low-history accounts can receive a feed nudge with no items.
         // Fall back so client UIs are not left completely empty.
-        if let searchFallbackData = try? await webSearchNetwork.get("search", body: ["query": "top music videos"]) {
-            let parsedSearchFallback = parseContinuationResults(from: searchFallbackData)
+        let fallbackQuery = makeRegionalMusicFallbackQuery(regionCode: regionCode)
+        if let searchFallbackData = try? await searchNetwork.get("search", body: ["query": fallbackQuery]) {
+            var parsedSearchFallback = parseContinuationResults(from: searchFallbackData)
+            if musicOnly {
+                parsedSearchFallback = filteredMusicContinuation(parsedSearchFallback)
+            }
             if !parsedSearchFallback.items.isEmpty {
                 return parsedSearchFallback
             }
         }
 
         if let trendingVideos = try? await getTrending(), !trendingVideos.isEmpty {
-            return YouTubeContinuation(
-                items: trendingVideos.map { .video($0) },
+            var trendingFallback = YouTubeContinuation(
+                items: trendingVideos.map { YouTubeItem.video($0) },
                 continuationToken: nil
             )
+
+            if musicOnly {
+                trendingFallback = filteredMusicContinuation(trendingFallback)
+            }
+
+            if !trendingFallback.items.isEmpty {
+                return trendingFallback
+            }
         }
 
         return parsedHome
@@ -174,5 +197,130 @@ public actor YouTubeClient {
             throw YouTubeError.apiError(message: "AI Summary not available for this video.")
         }
         return summary
+    }
+}
+
+extension YouTubeClient {
+    func filteredMusicContinuation(_ continuation: YouTubeContinuation<YouTubeItem>) -> YouTubeContinuation<YouTubeItem> {
+        let filteredItems = continuation.items.filter { shouldKeepMusicHomeItem($0) }
+        return YouTubeContinuation(items: filteredItems, continuationToken: continuation.continuationToken)
+    }
+
+    func makeWebSearchNetwork(regionCode: String?, languageCode: String?) -> NetworkClient {
+        guard let normalizedRegion = normalizedRegionCode(regionCode) else {
+            return webSearchNetwork
+        }
+
+        let normalizedLanguage = normalizedLanguageCode(languageCode)
+        let context = InnerTubeContext(
+            client: ClientConfig.web,
+            cookies: cookies,
+            gl: normalizedRegion,
+            hl: normalizedLanguage
+        )
+        return NetworkClient(context: context)
+    }
+
+    nonisolated func shouldKeepMusicHomeItem(_ item: YouTubeItem) -> Bool {
+        switch item {
+        case .song:
+            return true
+        case .playlist(let playlist):
+            return isLikelyMusicMetadata(title: playlist.title, secondaryText: playlist.author)
+        case .video(let video):
+            return isLikelyMusicMetadata(title: video.title, secondaryText: video.author)
+        case .channel(let channel):
+            return isLikelyArtistChannelName(channel.title)
+        case .shelf(let shelf):
+            return isLikelyMusicMetadata(title: shelf.title, secondaryText: nil)
+        }
+    }
+
+    nonisolated func makeRegionalMusicFallbackQuery(regionCode: String?) -> String {
+        if let normalizedRegion = normalizedRegionCode(regionCode) {
+            return "top music videos \(normalizedRegion)"
+        }
+        return "top music videos"
+    }
+
+    nonisolated func normalizedRegionCode(_ rawRegionCode: String?) -> String? {
+        guard let raw = rawRegionCode?.trimmingCharacters(in: .whitespacesAndNewlines), !raw.isEmpty else {
+            return nil
+        }
+        let uppercased = raw.uppercased()
+        guard uppercased.count == 2 else { return nil }
+        return uppercased
+    }
+
+    nonisolated func normalizedLanguageCode(_ rawLanguageCode: String?) -> String {
+        guard let raw = rawLanguageCode?.trimmingCharacters(in: .whitespacesAndNewlines), !raw.isEmpty else {
+            return "en"
+        }
+
+        if let separator = raw.firstIndex(where: { $0 == "-" || $0 == "_" }) {
+            return String(raw[..<separator]).lowercased()
+        }
+
+        return raw.lowercased()
+    }
+
+    nonisolated func isLikelyArtistChannelName(_ channelName: String) -> Bool {
+        let normalized = channelName.lowercased()
+        let trustedSignals = [
+            "official artist channel",
+            "- topic",
+            "vevo",
+            "records",
+            "music",
+            "band",
+            "orchestra"
+        ]
+        return trustedSignals.contains { normalized.contains($0) }
+    }
+
+    nonisolated func isLikelyMusicMetadata(title: String, secondaryText: String?) -> Bool {
+        let normalizedTitle = title.lowercased()
+        let normalizedSecondary = secondaryText?.lowercased() ?? ""
+        let merged = "\(normalizedTitle) \(normalizedSecondary)"
+
+        let blockedSignals = [
+            "#shorts",
+            "/shorts/",
+            "tutorial",
+            "gameplay",
+            "gaming",
+            "reaction",
+            "review",
+            "podcast",
+            "interview"
+        ]
+        if blockedSignals.contains(where: { merged.contains($0) }) {
+            return false
+        }
+
+        let positiveSignals = [
+            "official music video",
+            "official video",
+            "official audio",
+            "lyric",
+            "lyrics",
+            "visualizer",
+            "audio",
+            "song",
+            "album",
+            "single",
+            "remix",
+            "acoustic",
+            "feat.",
+            "ft.",
+            "vevo",
+            "topic"
+        ]
+
+        if positiveSignals.contains(where: { merged.contains($0) }) {
+            return true
+        }
+
+        return isLikelyArtistChannelName(secondaryText ?? "")
     }
 }

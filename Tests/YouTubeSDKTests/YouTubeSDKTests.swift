@@ -36,4 +36,11 @@ struct YouTubeSDKTests {
         let feed = try await client.getHome()
         #expect(!feed.items.isEmpty)
     }
+
+    @Test("Fetch Music-Only Home Feed")
+    func fetchMusicOnlyHomeFeed() async throws {
+        let client = YouTubeClient()
+        let feed = try await client.getHome(musicOnly: true)
+        #expect(!feed.items.isEmpty)
+    }
 }

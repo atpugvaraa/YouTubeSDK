@@ -31,7 +31,7 @@ extension YouTubeClient {
 
     /// Fetches the next page of results using a continuation token.
     /// - Parameter token: The token retrieved from a previous result.
-    public func fetchContinuation(token: String) async throws -> YouTubeContinuation<YouTubeItem> {
+    public func fetchContinuation(token: String, musicOnly: Bool = false) async throws -> YouTubeContinuation<YouTubeItem> {
         // Search continuations can be returned in different token encodings and
         // may require either the `search` or `browse` endpoint depending on
         // server-side routing. Try the most likely combinations in order.
@@ -54,7 +54,11 @@ extension YouTubeClient {
 //                let diagnostics = diagnoseSearchResponse(from: data)
 //                    print("yt_fetch_continuation client=WEB attempt=\(attempt) endpoint=\(endpoint) \(diagnostics.summary)")
 //                    writeSearchDebugDump(data, clientName: "web_continuation_\(endpoint)")
-                    return parseContinuationResults(from: data)
+                    var continuation = parseContinuationResults(from: data)
+                    if musicOnly {
+                        continuation = filteredMusicContinuation(continuation)
+                    }
+                    return continuation
                 } catch {
                     lastError = error
                     let ns = error as NSError
