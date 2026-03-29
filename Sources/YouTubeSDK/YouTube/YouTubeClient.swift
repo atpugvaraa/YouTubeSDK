@@ -25,7 +25,28 @@ public actor YouTubeClient {
     public func getHome() async throws -> YouTubeContinuation<YouTubeItem> {
         // Home parsing is tuned to WEB browse payloads (rich wrappers and continuation shape).
         let data = try await webSearchNetwork.get("browse", body: ["browseId": YouTubeSDKConstants.InternalKeys.BrowseIDs.home])
-        return parseContinuationResults(from: data)
+        let parsedHome = parseContinuationResults(from: data)
+        if !parsedHome.items.isEmpty {
+            return parsedHome
+        }
+
+        // Logged-out/low-history accounts can receive a feed nudge with no items.
+        // Fall back so client UIs are not left completely empty.
+        if let searchFallbackData = try? await webSearchNetwork.get("search", body: ["query": "top music videos"]) {
+            let parsedSearchFallback = parseContinuationResults(from: searchFallbackData)
+            if !parsedSearchFallback.items.isEmpty {
+                return parsedSearchFallback
+            }
+        }
+
+        if let trendingVideos = try? await getTrending(), !trendingVideos.isEmpty {
+            return YouTubeContinuation(
+                items: trendingVideos.map { .video($0) },
+                continuationToken: nil
+            )
+        }
+
+        return parsedHome
     }
     
     public func getTrending() async throws -> [YouTubeVideo] {

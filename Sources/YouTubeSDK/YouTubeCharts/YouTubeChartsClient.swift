@@ -70,12 +70,13 @@ public actor YouTubeChartsClient {
             }
         }
 
-        if let legacyAnalyticsData = try? await analyticsNetwork.sendComplexRequest(
-            "browse",
-            body: ["browseId": legacyBrowseID(for: type)],
-            queryItems: [URLQueryItem(name: "alt", value: "json")],
-            additionalHeaders: ["X-Goog-Api-Format-Version": "2"]
-        ) {
+        if let legacyBrowseID = legacyBrowseID(for: type),
+           let legacyAnalyticsData = try? await analyticsNetwork.sendComplexRequest(
+                "browse",
+                body: ["browseId": legacyBrowseID],
+                queryItems: [URLQueryItem(name: "alt", value: "json")],
+                additionalHeaders: ["X-Goog-Api-Format-Version": "2"]
+           ) {
             let parsedLegacy = parseCharts(from: legacyAnalyticsData, type: type, sectionKeywords: sectionKeywords)
             if !parsedLegacy.isEmpty {
                 return parsedLegacy
@@ -96,14 +97,16 @@ public actor YouTubeChartsClient {
         return normalized.lowercased()
     }
 
-    private nonisolated func legacyBrowseID(for type: YouTubeChartItem.ChartItemType) -> String {
+    private nonisolated func legacyBrowseID(for type: YouTubeChartItem.ChartItemType) -> String? {
         switch type {
         case .song:
             return "FEmusic_analytics_charts_songs"
         case .video:
             return "FEmusic_analytics_charts_videos"
         case .artist:
-            return "FEmusic_analytics_charts_artists"
+            // This endpoint currently returns INVALID_ARGUMENT on charts.youtube.com.
+            // Keep artists on the charts home payload path instead of triggering noisy failures.
+            return nil
         }
     }
     

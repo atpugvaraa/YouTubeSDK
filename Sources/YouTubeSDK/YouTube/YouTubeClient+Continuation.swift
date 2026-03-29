@@ -245,17 +245,6 @@ extension YouTubeClient {
         let shelves = findAll(key: keys.musicShelf, in: json)
         let carousels = findAll(key: keys.musicCarouselShelf, in: json)
         
-        let counts: [String: Int] = [
-            "video": videos.count,
-            "channel": channels.count,
-            "playlist": playlists.count,
-            "song": songs.count,
-            "musicShelf": shelves.count,
-            "musicCarouselShelf": carousels.count
-        ]
-        
-        print("parseContinuationResults counts \(counts)")
-        
         var seenVideoIds = Set<String>()
         videos.forEach { dict in
             if let video = YouTubeVideo(from: dict),
