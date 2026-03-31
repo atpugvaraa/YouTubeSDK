@@ -1,0 +1,158 @@
+[
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_chevron_right.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_chevron_right.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/notification_bg_low_normal.9.png",
+        "source": "aaravgupta.youtubesdk-core-1.9.0-5:/drawable-mdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_circular_play.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_circular_play.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_pause_circle_filled.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_pause_circle_filled.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_default_album_image.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_default_album_image.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_edit_mode_logo.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_edit_mode_logo.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_fullscreen_enter.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_fullscreen_enter.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_subtitle_on.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_subtitle_on.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_check.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_check.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_previous.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_previous.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/notification_bg_low_pressed.9.png",
+        "source": "aaravgupta.youtubesdk-core-1.9.0-5:/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/notify_panel_notification_icon_bg.png",
+        "source": "aaravgupta.youtubesdk-core-1.9.0-5:/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/notification_bg_normal_pressed.9.png",
+        "source": "aaravgupta.youtubesdk-core-1.9.0-5:/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/notification_bg_normal.9.png",
+        "source": "aaravgupta.youtubesdk-core-1.9.0-5:/drawable-mdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_play.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_play.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_fullscreen_exit.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_fullscreen_exit.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_vr.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_vr.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_subtitle_off.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_subtitle_off.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_fastforward.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_fastforward.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_repeat_one.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_repeat_one.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_rewind.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_rewind.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_play_circle_filled.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_play_circle_filled.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_stop.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_stop.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_rewind.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_rewind.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_repeat_off.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_repeat_off.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_repeat_all.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_repeat_all.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_shuffle_on.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_shuffle_on.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_forward.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_forward.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_fullscreen_enter.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_fullscreen_enter.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_pause.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_pause.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_skip_previous.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_skip_previous.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_next.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_next.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_icon_shuffle_off.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_icon_shuffle_off.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_skip_next.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_skip_next.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_audiotrack.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_audiotrack.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_speed.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_speed.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_chevron_left.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_chevron_left.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_fullscreen_exit.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_fullscreen_exit.png"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-mdpi-v4/exo_ic_settings.png",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-mdpi-v4/exo_ic_settings.png"
+    }
+]

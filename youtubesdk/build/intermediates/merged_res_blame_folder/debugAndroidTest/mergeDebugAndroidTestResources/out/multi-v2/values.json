@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "aaravgupta.youtubesdk.test.youtubesdk-mergeDebugAndroidTestResources-2:/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/aaravgupta/.gradle/caches/9.4.1/transforms/551d206d0ae0869523880aa0cd4a67f5/transformed/startup-runtime-1.2.0/res/values/values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "82",
+                        "endOffsets": "133"
+                    }
+                }
+            ]
+        }
+    ]
+}

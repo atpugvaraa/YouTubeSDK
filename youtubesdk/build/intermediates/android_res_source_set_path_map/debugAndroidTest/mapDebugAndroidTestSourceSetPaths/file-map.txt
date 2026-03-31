@@ -1,0 +1,5 @@
+aaravgupta.youtubesdk.test.youtubesdk-androidTest-0 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/generated/res/resValues/androidTest/debug
+aaravgupta.youtubesdk.test.youtubesdk-updated_navigation_xml-1 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/generated/updated_navigation_xml/debugAndroidTest
+aaravgupta.youtubesdk.test.youtubesdk-mergeDebugAndroidTestResources-2 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+aaravgupta.youtubesdk.test.youtubesdk-mergeDebugAndroidTestResources-3 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+aaravgupta.youtubesdk.test.youtubesdk-debugAndroidTest-4 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/merged_res/debugAndroidTest/mergeDebugAndroidTestResources

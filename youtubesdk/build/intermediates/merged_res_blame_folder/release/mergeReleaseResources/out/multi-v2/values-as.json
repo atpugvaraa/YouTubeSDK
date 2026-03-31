@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "aaravgupta.youtubesdk-release-14:/values-as/values-as.xml",
+            "map": [
+                {
+                    "source": "/Users/aaravgupta/.gradle/caches/9.4.1/transforms/9d908abd43ede7d8ac8374b04b04f306/transformed/core-1.9.0/res/values-as/values-as.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "aaravgupta.youtubesdk-mergeReleaseResources-12:/values-as/values-as.xml",
+            "map": [
+                {
+                    "source": "/Users/aaravgupta/.gradle/caches/9.4.1/transforms/9d908abd43ede7d8ac8374b04b04f306/transformed/core-1.9.0/res/values-as/values-as.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}

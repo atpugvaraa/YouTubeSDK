@@ -1,0 +1,130 @@
+[
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_settings.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_settings.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_icon_play.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_icon_play.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_default_album_image.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_default_album_image.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_icon_fullscreen_enter.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_icon_fullscreen_enter.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_skip_next.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_skip_next.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_icon_shuffle_on.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_icon_shuffle_on.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_audiotrack.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_audiotrack.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_pause_circle_filled.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_pause_circle_filled.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_rewind.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_rewind.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_chevron_left.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_chevron_left.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_chevron_right.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_chevron_right.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_check.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_check.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_icon_shuffle_off.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_icon_shuffle_off.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_icon_repeat_all.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_icon_repeat_all.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_speed.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_speed.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_subtitle_off.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_subtitle_off.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_edit_mode_logo.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_edit_mode_logo.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_icon_previous.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_icon_previous.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_icon_fastforward.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_icon_fastforward.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_subtitle_on.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_subtitle_on.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_icon_repeat_one.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_icon_repeat_one.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_forward.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_forward.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_icon_pause.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_icon_pause.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_icon_stop.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_icon_stop.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_icon_rewind.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_icon_rewind.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_fullscreen_enter.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_fullscreen_enter.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_play_circle_filled.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_play_circle_filled.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_fullscreen_exit.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_fullscreen_exit.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_icon_fullscreen_exit.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_icon_fullscreen_exit.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_ic_skip_previous.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_ic_skip_previous.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_icon_repeat_off.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_icon_repeat_off.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable-anydpi-v21/exo_icon_next.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable-anydpi-v21/exo_icon_next.xml"
+    }
+]

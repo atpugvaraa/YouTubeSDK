@@ -8,3 +8,6 @@ DerivedData/
 .netrc
 /cisum+YouTubeSDK
 /build
+/.gradle
+/.idea
+/gradle

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/layout-v23/exo_player_control_ffwd_button.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/layout-v23/exo_player_control_ffwd_button.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/layout-v23/exo_player_control_rewind_button.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/layout-v23/exo_player_control_rewind_button.xml"
+    }
+]

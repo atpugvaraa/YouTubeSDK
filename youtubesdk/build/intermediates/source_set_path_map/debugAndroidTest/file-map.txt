@@ -1,0 +1,5 @@
+aaravgupta.youtubesdk.test.youtubesdk-androidTest-0 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/generated/res/resValues/androidTest/debug
+aaravgupta.youtubesdk.test.youtubesdk-mergeDebugAndroidTestResources-1 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+aaravgupta.youtubesdk.test.youtubesdk-mergeDebugAndroidTestResources-2 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+aaravgupta.youtubesdk.test.youtubesdk-merged_res-3 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/merged_res/debugAndroidTest
+aaravgupta.youtubesdk.test.youtubesdk-packaged_res-4 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/packaged_res/debug

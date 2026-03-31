@@ -1,0 +1,7 @@
+aaravgupta.youtubesdk-pngs-0 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/generated/res/pngs/release
+aaravgupta.youtubesdk-resValues-1 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/generated/res/resValues/release
+aaravgupta.youtubesdk-mergeReleaseResources-2 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/incremental/release/mergeReleaseResources/merged.dir
+aaravgupta.youtubesdk-mergeReleaseResources-3 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+aaravgupta.youtubesdk-merged_res-4 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/merged_res/release
+aaravgupta.youtubesdk-main-5 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/src/main/res
+aaravgupta.youtubesdk-release-6 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/src/release/res

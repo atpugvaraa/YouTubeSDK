@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="aaravgupta.youtubesdk.test" >
+
+    <uses-sdk
+        android:minSdkVersion="24"
+        android:targetSdkVersion="24" />
+
+    <instrumentation
+        android:name="androidx.test.runner.AndroidJUnitRunner"
+        android:functionalTest="false"
+        android:handleProfiling="false"
+        android:label="Tests for aaravgupta.youtubesdk.test"
+        android:targetPackage="aaravgupta.youtubesdk.test" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:debuggable="true"
+        android:extractNativeLibs="false" >
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="aaravgupta.youtubesdk.test.androidx-startup"
+            android:exported="false" >
+            <meta-data
+                android:name="okhttp3.internal.platform.PlatformInitializer"
+                android:value="androidx.startup" />
+        </provider>
+    </application>
+
+</manifest>

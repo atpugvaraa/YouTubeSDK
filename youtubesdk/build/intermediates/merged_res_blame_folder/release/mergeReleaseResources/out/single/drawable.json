@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable/notification_icon_background.xml",
+        "source": "aaravgupta.youtubesdk-core-1.9.0-5:/drawable/notification_icon_background.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable/notification_bg.xml",
+        "source": "aaravgupta.youtubesdk-core-1.9.0-5:/drawable/notification_bg.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable/notification_tile_bg.xml",
+        "source": "aaravgupta.youtubesdk-core-1.9.0-5:/drawable/notification_tile_bg.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable/exo_rounded_rectangle.xml",
+        "source": "aaravgupta.youtubesdk-media3-ui-1.5.1-6:/drawable/exo_rounded_rectangle.xml"
+    },
+    {
+        "merged": "aaravgupta.youtubesdk-release-14:/drawable/notification_bg_low.xml",
+        "source": "aaravgupta.youtubesdk-core-1.9.0-5:/drawable/notification_bg_low.xml"
+    }
+]

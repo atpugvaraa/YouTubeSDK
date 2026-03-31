@@ -1,0 +1,9 @@
+aaravgupta.youtubesdk-pngs-0 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/generated/res/pngs/debug
+aaravgupta.youtubesdk-resValues-1 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/generated/res/resValues/debug
+aaravgupta.youtubesdk-updated_navigation_xml-2 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/generated/updated_navigation_xml/debug
+aaravgupta.youtubesdk-mergeDebugResources-3 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
+aaravgupta.youtubesdk-mergeDebugResources-4 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+aaravgupta.youtubesdk-debug-5 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/merged_res/debug/mergeDebugResources
+aaravgupta.youtubesdk-debug-6 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/packaged_res/debug/packageDebugResources
+aaravgupta.youtubesdk-debug-7 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/src/debug/res
+aaravgupta.youtubesdk-main-8 /Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/src/main/res

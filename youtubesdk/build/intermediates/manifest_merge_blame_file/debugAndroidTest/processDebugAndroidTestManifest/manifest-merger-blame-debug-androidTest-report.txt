@@ -1,0 +1,51 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="aaravgupta.youtubesdk.test" >
+4
+5    <uses-sdk
+5-->/Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest16396727869202374182.xml:5:5-74
+6        android:minSdkVersion="24"
+6-->/Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest16396727869202374182.xml:5:15-41
+7        android:targetSdkVersion="24" />
+7-->/Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest16396727869202374182.xml:5:42-71
+8
+9    <instrumentation
+9-->/Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest16396727869202374182.xml:7:5-11:76
+10        android:name="androidx.test.runner.AndroidJUnitRunner"
+10-->/Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest16396727869202374182.xml:7:22-76
+11        android:functionalTest="false"
+11-->/Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest16396727869202374182.xml:10:22-52
+12        android:handleProfiling="false"
+12-->/Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest16396727869202374182.xml:9:22-53
+13        android:label="Tests for aaravgupta.youtubesdk.test"
+13-->/Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest16396727869202374182.xml:11:22-74
+14        android:targetPackage="aaravgupta.youtubesdk.test" />
+14-->/Users/aaravgupta/Programming/Kotlin/Packages/YouTubeSDK/youtubesdk/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest16396727869202374182.xml:8:22-72
+15
+16    <uses-permission android:name="android.permission.INTERNET" />
+16-->[com.squareup.okhttp3:okhttp-android:5.3.2] /Users/aaravgupta/.gradle/caches/9.4.1/transforms/df966ee3802b6f9314b587ad18371c13/transformed/okhttp-release/AndroidManifest.xml:8:5-67
+16-->[com.squareup.okhttp3:okhttp-android:5.3.2] /Users/aaravgupta/.gradle/caches/9.4.1/transforms/df966ee3802b6f9314b587ad18371c13/transformed/okhttp-release/AndroidManifest.xml:8:22-64
+17
+18    <application
+18-->INJECTED
+19        android:debuggable="true"
+20        android:extractNativeLibs="false" >
+20-->INJECTED
+21        <provider
+21-->[com.squareup.okhttp3:okhttp-android:5.3.2] /Users/aaravgupta/.gradle/caches/9.4.1/transforms/df966ee3802b6f9314b587ad18371c13/transformed/okhttp-release/AndroidManifest.xml:11:9-19:20
+22            android:name="androidx.startup.InitializationProvider"
+22-->[com.squareup.okhttp3:okhttp-android:5.3.2] /Users/aaravgupta/.gradle/caches/9.4.1/transforms/df966ee3802b6f9314b587ad18371c13/transformed/okhttp-release/AndroidManifest.xml:12:13-67
+23            android:authorities="aaravgupta.youtubesdk.test.androidx-startup"
+23-->[com.squareup.okhttp3:okhttp-android:5.3.2] /Users/aaravgupta/.gradle/caches/9.4.1/transforms/df966ee3802b6f9314b587ad18371c13/transformed/okhttp-release/AndroidManifest.xml:13:13-68
+24            android:exported="false" >
+24-->[com.squareup.okhttp3:okhttp-android:5.3.2] /Users/aaravgupta/.gradle/caches/9.4.1/transforms/df966ee3802b6f9314b587ad18371c13/transformed/okhttp-release/AndroidManifest.xml:14:13-37
+25            <meta-data
+25-->[com.squareup.okhttp3:okhttp-android:5.3.2] /Users/aaravgupta/.gradle/caches/9.4.1/transforms/df966ee3802b6f9314b587ad18371c13/transformed/okhttp-release/AndroidManifest.xml:16:13-18:52
+26                android:name="okhttp3.internal.platform.PlatformInitializer"
+26-->[com.squareup.okhttp3:okhttp-android:5.3.2] /Users/aaravgupta/.gradle/caches/9.4.1/transforms/df966ee3802b6f9314b587ad18371c13/transformed/okhttp-release/AndroidManifest.xml:17:17-77
+27                android:value="androidx.startup" />
+27-->[com.squareup.okhttp3:okhttp-android:5.3.2] /Users/aaravgupta/.gradle/caches/9.4.1/transforms/df966ee3802b6f9314b587ad18371c13/transformed/okhttp-release/AndroidManifest.xml:18:17-49
+28        </provider>
+29    </application>
+30
+31</manifest>

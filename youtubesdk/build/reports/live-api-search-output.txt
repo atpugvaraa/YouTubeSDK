@@ -1,0 +1,18 @@
+timestamp=2026-03-31T18:20:23.567331Z
+youtube.query=lofi hip hop beats
+youtube.count=18
+youtube.continuationTokenPresent=true
+youtube.sample=
+  1. video(id=lTRiuFIWV54, title=1 A.M Study Session 📚 [lofi hip hop], author=Lofi Girl)
+  2. video(id=n61ULEU7CO0, title=Best of lofi hip hop 2021 ✨ [beats to relax/study to], author=Lofi Girl)
+  3. video(id=jfKfPfyJRdk, title=lofi hip hop radio 📚 beats to relax/study to, author=Lofi Girl)
+  4. video(id=rPjez8z61rI, title=lofi hip hop radio – beats to sleep/study/relax to ☕, author=STEEZYASFUCK)
+  5. video(id=CLeZyIID9Bo, title=Chill Lofi Mix [chill lo-fi hip hop beats], author=Settle)
+music.query=coldplay yellow
+music.count=14
+music.sample=
+  1. song(id=mRP72Ib2e9I, title=Yellow (Live from UNSTAGED), artists=Coldplay)
+  2. song(id=UarC7aPCIvE, title=Coldplay - Yellow (TikTok Remix) [Lyrics], artists=)
+  3. song(id=wmVtQMhOWF8, title=Yellow - Coldplay played by 1000 Musicians | Rockin’1000, artists=)
+  4. song(id=9qnqYL0eNNI, title=Yellow, artists=Coldplay)
+  5. song(id=Oncu0bgdcXU, title=Fix You, artists=Coldplay)
